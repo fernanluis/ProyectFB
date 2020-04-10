@@ -1,5 +1,9 @@
 class User < ApplicationRecord
 
+  has_many :post
+  has_many :comments
+  has_many :likes, dependent: :destroy # inverso de asociación 
+
   # el método mount_uploader se agrega desde la gema carrierwave y el parámetro 'ImageUploader'
   # suministrado hace referencia al nombre del cargador que se generó. Se usa 'ImageUploader'
   # ya que generamos un cargador llamado image (app / uploaders / image_uploader.rb).
@@ -17,5 +21,5 @@ class User < ApplicationRecord
       errors.add(:image, 'should be less than 1MB') if image.size > 1.megabytes
     end
 
-  
+
 end
