@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'friendships/create'
+  get 'likes/create'
   get 'comments/new'
   get 'comments/create'
   get 'posts/index'
