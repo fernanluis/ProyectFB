@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_many :post
   has_many :comments
   has_many :likes, dependent: :destroy # inverso de asociación
+  has_many :notifications, dependent: :destroy # inverso de asociación
 
   # Las líneas friend_sent.. y friend_request son las asociaciones inversas creadas para vincular
   # a las asociaciones sent_to y sent_by realizadas en el modelo de Amistad (app/models/friendship.rb).
