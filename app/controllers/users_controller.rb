@@ -13,6 +13,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  # The update_img method is used to switch the image file associated with the User record.
+  # 
   def update_img
     @user = User.find(params[:id])
     unless current_user.id == @user.id

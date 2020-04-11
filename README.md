@@ -35,4 +35,4 @@ Mostrar cómo usar las funciones auxiliares y los métodos de controlador para l
 
 Vistas de diseño / Layout Views: vistas que se pueden ver en cada página, por lo tanto, es el lugar para las notificaciones flash y la barra de navegación.
 
-Creating Posts
+Comments & Likes
