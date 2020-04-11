@@ -47,6 +47,30 @@ class User < ApplicationRecord
 
   validate :picture_size # method into the validation requirements for the User model.
 
+  # Returns a string containing this user's first name and last class_name
+  def full_name
+    "#{fname} #{lname}"
+  end
+
+  # Returns all posts front this user's friends ans self
+
+  def friends_and_own_posts
+    myfriends = friends # es una matriz que se completa utilizando la asociación 'has_many: friends'
+                        # que devuelve todos los registros de los amigos del usuario.
+    our_posts = [] # las publicaciones de cada uno de los amigos junto con las propias
+                   # publicaciones del usuario se insertan en 'our_posts'.
+    myfriends.each do |f|
+      f.post each do |p|
+        our_posts << p
+      end
+    end
+
+    post.each do |p|
+      our_posts << p
+    end
+    our_posts
+  end
+
   private
     # Validates the size of an uploaded picture.
     def picture_size

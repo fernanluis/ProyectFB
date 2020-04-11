@@ -25,7 +25,7 @@ Notificaciones (notification), lugar donde permitimos, a traves de los scope, de
 No se ha generado un controlador Notification, sin embargo, los métodos principales que se utilizan para crear notificaciones serán creados en AplicationHelper.
 Dado que una notificación solo se creará como resultado de la llamada a otra función de método y no tiene una vista real. En lugar de crear un controlador, simplemente se crea como un método auxiliar.
 
-Para las vistas (Views) se usaron:
+Para las vistas (Views):
 
 Bootstrap: https://getbootstrap.com/
 GoogleFonts: https://fonts.google.com/
@@ -35,4 +35,4 @@ Mostrar cómo usar las funciones auxiliares y los métodos de controlador para l
 
 Vistas de diseño / Layout Views: vistas que se pueden ver en cada página, por lo tanto, es el lugar para las notificaciones flash y la barra de navegación.
 
-Vista modal de la decisión de amistad
+Creating Posts
