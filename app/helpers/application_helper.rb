@@ -18,8 +18,21 @@ module ApplicationHelper
     comment = Comment.find(notice.notice_id)
     Post.find(comment.post_id)
   end
-end
 
 # Dado que una notificación solo se creará como resultado de la
 # llamada a otra función de método y no tiene una vista real.
 # En lugar de crear un controlador, simplemente lo crearemos como un método auxiliar.
+
+  # Checks whether a post or comment has already been liked by the
+  # current user returning either true or false
+  # Similar to the already_liked method in the Likes controller, the liked?(subject, type)
+  # method takes two arguments. A record object, subject and the string literal of its type.
+  def liked?(subject, type)
+    result = false
+    result = Like.where(user_id: current_user.id, post_id:
+                        subject.id).exists? if type == 'post'
+    result = Like.where(user_id: current_user.id,comment_id:
+                        subject.id).exists? if type == 'comment'
+    result
+  end
+end
