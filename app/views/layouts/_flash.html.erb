@@ -1,0 +1,15 @@
+<!-- Layouts: Essentially these views are view-able on every page, so, this is where we will create
+our Flash notifications and Navigation Bar. -->
+
+<% flash.each do |message_type, message| %>
+  <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+<% end %>
+
+<!--the _ (underscore) preceding the name of the file dictates that this file will be a render.-->
+<!-- Since flash is a Hash, flash.each do scans through each of the key, value pairs.
+The keys are between :notice, :success, :error and :alert. The values are the flash message supplied. -->
+
+<!-- So content_tag(:div, message, class: “alert alert-#{message_type}”),
+creates a new div element with it’s TextContent equal to the ‘message’ supplied with
+a class equal to ‘alert alert-‘message_type’’ supplied.
+‘message_type’ can be either notice, success, error or alert. -->

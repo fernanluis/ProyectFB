@@ -1,0 +1,75 @@
+<header class="fixed-top navbar-dark bg-dark shadow">
+
+  <div>
+    <nav class="navbar navbar-expand-sm">
+      <div class ="navbar-header">
+        <%= link_to posts_path, class:"text-light" do %>
+          <%=image_tag("hola3.svg", id:"logo", class:"navbar-branch")%>
+          <span class="text-white font-weight-bold font-courgette size-24">Hi!</span>
+        <% end %>
+      </div>
+
+      <div class="container mx-auto">
+        <div class="row mx-auto">
+          <div class="col-auto">
+            <!-- The ‘link_to posts_path’ route simply links to the Posts index view -->
+            <%= link_to posts_path, class:"text-light nav-link font-raleway" do%>
+              <i class="fas fa-home"></i> Home
+            <%end%>
+          </div>
+
+          <div class="col-auto">
+            <!-- The ‘link_to users_path’ route simply links to the Users index view-->
+            <%= link_to users_path, class:"text-light nav-link font-raleway" do%>
+              <i class="fas fa-users"></i> Find Users
+            <%end%>
+          </div>
+        </div>
+      </div>
+
+      <ul class="navbar-nav ml-auto">
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <!-- The notification’s button will display an icon provided by FontAwesome
+            and the number of notifications the current user has. -->
+            <button class="text-white btn btn-secondary", data-toggle="modal" data-target="#noticeModal">
+              <i class="fas fa-bell"></i>
+                <%= current_user.notifications.count %>
+            </button>
+            <!-- slightly changed ..
+            ..= button_to saw_notice_path, :class => "text-white btn notice-btn-#{notification_seen}",
+             data: {toggle: 'modal', target: '#noticeModal'}, method: :get, remote: true do %>-->
+             <!--
+             ..% if notification_seen %>-->
+              <!--
+              <i class="fas fa-bell-slash"></i>-->
+             <!--
+             else %>-->
+            <!--
+            <i class="fas fa-bell"></i>-->
+            <!--
+            < end %>-->
+            <!-- < end %>-->
+          </li>
+          <li class="nav-item dropdown">
+            <a id="navbarDropdown" class="nav-link dropdown-toggle font-raleway"
+                href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Account <b class="caret"></b>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <!--The ‘link_to user_path(current_user)’ route links to the Users show view
+              using the id of current user to display information relative to that user.-->
+              <%= link_to "My Profile", user_path(current_user), class:"dropdown-item font-raleway" %>
+              <!--The ‘link_to destroy_user_session_path’ route links to a devise sessions controller destroy method-->
+              <%= link_to "Log out", destroy_user_session_path, class:"dropdown-item font-raleway", method: :delete %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<% if user_signed_in? %>
+  <%= render 'shared/notifications', object: current_user.notifications%>
+<%end%>

@@ -35,7 +35,9 @@ Mostrar cómo usar las funciones auxiliares y los métodos de controlador para l
 
 Vistas de diseño / Layout Views: vistas que se pueden ver en cada página, por lo tanto, es el lugar para las notificaciones flash y la barra de navegación.
 
-Application helper Likes methods
-Friendship Controller
-Editing routes
-Views
+Las explicación del sistema de notificaciones aquí son ligeramente diferentes del sistema usado en el proyecto de Github.
+
+
+Views, Custom CSS Classes Used Here app/assets/stylesheets/custom.scss, For the views we will be using Bootstrap, GoogleFonts and FontAwesome.
+Views >> Layout Views. >> flash notifications, Navigation bar, shared/notifications y image_uploaded
+Application view

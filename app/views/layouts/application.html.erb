@@ -1,15 +1,25 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Facebook</title>
+    <title>Fakebook</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+
+   <%= favicon_link_tag asset_path('fakebook.svg')%>
+    <!-- Para las vistas usaremos Bootstrap, GoogleFonts y FontAwesome.-->
+   <link href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Arima+Madurai:700|Courgette|Raleway:400,500&display=swap" rel="stylesheet">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <%= render 'layouts/header'%>
+    <div class="container">
+      <%= render 'layouts/flash'%>
+      <%= yield %>
+    </div>
   </body>
 </html>
