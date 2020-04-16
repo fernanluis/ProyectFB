@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Fakebook</title>
+    <title>MYOBOOK</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-   <%= favicon_link_tag asset_path('fakebook.svg')%>
+    <!-- Cancelé el favicon ..<= favicon_link_tag asset_path('fakebook.svg')%>
+
     <!-- Para las vistas usaremos Bootstrap, GoogleFonts y FontAwesome.-->
+
+    <!--Here we will render our Flash notifications(render ‘layouts/flash’)
+    and our Navigation bar(render ‘layouts/header’) as well as add links to GoogleFonts and FontAwesome. -->
+
    <link href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" rel="stylesheet">
    <link href="https://fonts.googleapis.com/css?family=Arima+Madurai:700|Courgette|Raleway:400,500&display=swap" rel="stylesheet">
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -15,10 +20,12 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <!-- our render -->
   <body>
     <%= render 'layouts/header'%>
     <div class="container">
       <%= render 'layouts/flash'%>
+      <!--yield is placeholder code where each of the other views will be displayed.-->
       <%= yield %>
     </div>
   </body>

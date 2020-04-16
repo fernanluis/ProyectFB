@@ -1,4 +1,4 @@
-<!-- Modal -->
+<!-- Image Upload Modal -->
 <div class="modal fade" id="imageUploadModal" tabindex="-1" role="dialog" aria-labelledby="imageUploadModal" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -8,8 +8,13 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div> -->
+
+      <!-- Within the modal we will create a form which allows the user to upload
+      any image of type jpeg, gif or png.-->
       <div class="modal-body">
         <h5 class="modal-title" id="imageUploadModalLabel"> Change Profile Picture </h5>
+        <!--The object variable you see being used is going to be the user object once
+        passed as reference by the render method as we will see in the User show view.-->
         <%= form_for(object, html: { method: :put }) do |f| %>
           <%= render "devise/shared/error_messages", resource: object %>
 
@@ -29,7 +34,7 @@
   </div>
 </div>
 
-
+<!--This function returns an alert when the image file uploaded is greater than 1 Mb in size.-->
 <script type="text/javascript">
   document.getElementById('user_image').addEventListener('change', function() {
     var size_in_megabytes = this.files[0].size/1024/1024;

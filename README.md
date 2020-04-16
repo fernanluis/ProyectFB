@@ -38,6 +38,10 @@ Vistas de diseño / Layout Views: vistas que se pueden ver en cada página, por 
 Las explicación del sistema de notificaciones aquí son ligeramente diferentes del sistema usado en el proyecto de Github.
 
 
-Views, Custom CSS Classes Used Here app/assets/stylesheets/custom.scss, For the views we will be using Bootstrap, GoogleFonts and FontAwesome.
-Views >> Layout Views. >> flash notifications, Navigation bar, shared/notifications y image_uploaded
+ver views shared
 Application view
+Cancelé el favicon, modifiqué brevemente el header. Modifiqué title
+Vistas modales renderizadas compartidas
+Vistas usuarios index y show
+Función javascript para dar alerta cuando el archivo de imagen cargado sea mayor a 1Mb de tamaño.
+Notifications Modal

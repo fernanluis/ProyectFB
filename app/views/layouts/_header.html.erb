@@ -4,8 +4,8 @@
     <nav class="navbar navbar-expand-sm">
       <div class ="navbar-header">
         <%= link_to posts_path, class:"text-light" do %>
-          <%=image_tag("hola3.svg", id:"logo", class:"navbar-branch")%>
-          <span class="text-white font-weight-bold font-courgette size-24">Hi!</span>
+          <%=image_tag("", id:"logo", class:"navbar-branch")%>
+          <span class="text-white font-weight-bold font-courgette size-24">MYOBOOK</span>
         <% end %>
       </div>
 
@@ -24,6 +24,14 @@
               <i class="fas fa-users"></i> Find Users
             <%end%>
           </div>
+
+          <div class="col-auto">
+            <!-- The ‘link_to posts_path’ route simply links to the Posts index view-->
+            <%= link_to posts_path, class:"text-light nav-link font-raleway" do%>
+              <i class="fas fa-users"></i> Posts
+            <%end%>
+          </div>
+
         </div>
       </div>
 
@@ -70,6 +78,14 @@
   </div>
 </header>
 
+<!--This render at the bottom of the page is necessary for the notifications button to work.
+As it allows a pop up to appear once clicked which shows all notifications the user has. -->
+
+<!--This object variable passed is the associative has many link between the User model
+and the Notifications model. Since this is a has many link and it can return multiple records
+within the Notifications modal we run an each do loop to handle each notification separately.
+This allows us to categorize our notifications and the ability to show context correct text
+about each notification: app/views/shared/_notifications.html.erb-->
 <% if user_signed_in? %>
   <%= render 'shared/notifications', object: current_user.notifications%>
 <%end%>

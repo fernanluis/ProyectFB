@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   end
 
   # The update_img method is used to switch the image file associated with the User record.
-  # 
+  #
   def update_img
     @user = User.find(params[:id])
     unless current_user.id == @user.id
@@ -32,5 +32,5 @@ class UsersController < ApplicationController
     end
     redirect_back(fallback_location: root_path)
   end
-
+  
 end

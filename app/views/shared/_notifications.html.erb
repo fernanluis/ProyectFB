@@ -9,6 +9,11 @@
         </button>
       </div>
       <div class="modal-body">
+        <!--Just like the Image modal render the Notifications modal render is passed
+        an object variable:app/views/layouts/_header.html.erb-->
+
+        <!--Aside from the friendship request notification all other notifications provide a link to
+        the liked content using the notification_find helper we created in the application_helper file.-->
         <% object.each do |n|%>
           <!-- If Notification type is a Friend Request -->
           <% if n.notice_type == "friendRequest"%>
