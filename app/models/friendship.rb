@@ -1,6 +1,11 @@
 class Friendship < ApplicationRecord
-  belongs_to :sent_to, class_name: 'User', foreign_key: 'sent_to_id'
-  belongs_to :sent_by, class_name: 'User', foreign_key: 'sent_to_id'
+  # rails generate model Friendship sent_to:references sent_by:references
+
+  # Los enlaces asociativos belong_to crean asociaciones entre Friendship y Users.
+  # Sent_to y sent_by vinculándolo a las columnas 'sent_to_id' y 'sent_by_id' como claves externas.
+  # class_name: '..' es el nombre de la tabla o el modelo al que está vinculada ésta asociación.
+  belongs_to :sent_to, class_name: 'User', foreign_key: 'sent_to_id' # se declaran asociaciones bidireccionales.
+  belongs_to :sent_by, class_name: 'User', foreign_key: 'sent_by_id' # se declaran asociaciones bidireccionales.
   scope :friends, -> { where('status =?', true) }
   scope :not_friends, -> { where('status =?', false) }
 end

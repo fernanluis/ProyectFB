@@ -1,4 +1,5 @@
 class Notification < ApplicationRecord
+  # rails generate model Notification notice_id:integer notice_type:string user:references
   belongs_to :user
   scope :friend_requests, -> { where('notice_type = friendRquest') }
   scope :likes, -> { where('notice_type = like') }
@@ -14,3 +15,6 @@ end
 # ..comments or friend requests.
 
 # This line creates two associations between Notification and Users.
+
+# NO hay necesidad de un controlador de notificaciones, sin embargo, los métodos principales
+# que se utilizaran para crear notificaciones serán creadas en la aplicación auxiliar. AplicationHelper

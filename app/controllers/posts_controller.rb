@@ -1,40 +1,46 @@
 class PostsController < ApplicationController
 
-  # The index method creates an instance variable which stores the result of the previously
-  # created method in the User model,‘friends_and_own_posts’
-  # to gather all the posts of this user and his friends
+  # El método index crea una variable de instancia que almacena el resultado del método creado
+  # previamente en el modelo de usuario,'friends_and_own_posts' para recopilar todas
+  # las publicaciones de este usuario y sus amigos.
   def index
-    our_posts = current_user.friends_and_own_posts
+    @our_posts = current_user.friends_and_own_posts
   end
 
-  # The show method grabs a particular post depending on the id supplied by the route
-  # and stores it into an instance variable called @post.
+  # El método show toma una publicación en particular dependiendo de la identificación proporcionada
+  # por la ruta y la almacena en una variable de instancia llamada @post .
   def show
-    @post =  Post.find(params[:id])
+    @post = Post.find(params[:id])
   end
 
-  # The new method creates a new Post record and assigns it to the @post variable but doesn’t save it.
+  # El new método crea un nuevo registro Post y lo asigna a la
+  # variable @post pero no lo guarda.
   def new
-    @post =  Post.new
+    @post = Post.new
   end
 
-  # The create method creates a new Post record, assigning the user_id of that post
-  # to that of the current_user that is signed in. (current_user is a devise included helper method)
+  # El método create crea un nuevo registro Post, asignando el user_id de esa publicación
+  # al del usuario actual que ha iniciado sesión (current_user es un dispositivo auxiliar incluido).
   def create
+    # También crea la publicación utilizando los parámetros permitidos por el método posts_params
     @post = current_user.posts.build(posts_params)
     if @post.save
+      # Si la publicación se creó y se guardó correctamente, el navegador redirigirá a la vista
+      # de la página de la publicación creada.
       redirect_to @post
     else
+      # Sin embargo, si la publicación no se pudo guardar, se mostrará la nueva vista de página de una
+      # publicación (que será el formulario utilizado para crear una publicación).
       render "new"
     end
   end
 
-  def destroy;  end
+  def destroy; end
 
-  # posts_params method is declared as a private method (method is only accessible within current file)
-  # which permits the parameters :content and :imageURL provided by the create post route returning
-  # them in a Hash format:
-  # # => <ActionController::Parameters {"content"=>"Example post", "imageURL"=>"http://example.com"} permitted: true>
+  # El método posts_params se declara como un método privado (solo se puede acceder al método
+  # dentro del archivo actual) que permite los parámetros :content y :imageURL proporcionados
+  # por la ruta de creación de publicaciones que los devuelve en un formato Hash:
+  # => <ActionController::Parameters {"content"=>"Example post", "imageURL"=>"http://example.com"} permitted: true>
   private
 
   def posts_params

@@ -1,0 +1,26 @@
+<!-- Modal -->
+<!--Friend request decision modal contains links to the accept_friend and decline_friend
+methods from the Friendship Controller.-->
+<div class="modal fade" id="decisionModal" tabindex="-1" role="dialog" aria-labelledby="decisionModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <!--  <div class="modal-header">
+        <h5 class="modal-title" id="decisionModalLabel">Friend Request</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div> -->
+      <div class="modal-body">
+        <h5 class="modal-title" id="decisionModalLabel">Friend Request from <%= "#{object.full_name}" %></h5>
+      </div>
+      <div class="modal-footer">
+        <%= link_to accept_friend_user_friendships_path(object) do %>
+          <button type="button" class="btn btn-accept text-white font-weight-bold"> <i class="fas fa-user-check"></i> Accept</button>
+        <% end %>
+        <%= link_to decline_friend_user_friendships_path(object) do %>
+          <button type="button" class="btn btn-decline text-white font-weight-bold"><i class="fas fa-user-times"></i> Decline</button>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

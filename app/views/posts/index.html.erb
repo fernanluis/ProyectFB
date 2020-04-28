@@ -1,2 +1,12 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<h1>My posts and my friends posts</h1>
+<div class="center font-raleway ">
+  <!--Vista simple que tiene un enlace a la new views post . -->
+  <%= link_to new_post_path, class: "btn btn-success" do%>
+    New Post?
+  <%end%>
+</div>
+<!--También representa las publicaciones del usuario actual y de los amigos del usuario
+mediante la variable de instancia creada en el controlador Posts, @our_posts.-->
+<% @our_posts.each do |p|%>
+  <%= render 'posts/post_layout', object: p %>
+<% end %>

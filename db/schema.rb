@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(version: 2020_04_10_234737) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "fname"
-    t.string "references"
+    # t.string "references"
     t.string "lname"
     t.string "image"
     t.index ["email"], name: "index_users_on_email", unique: true
