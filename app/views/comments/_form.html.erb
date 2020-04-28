@@ -1,0 +1,15 @@
+<!--La vista de formulario de comentarios es una vista directa que se representará en varios lugares.
+Utiliza el método Rails form_for para crear un nuevo registro de Comentarios e intenta enviar
+este registro usando el método Crear del controlador de Comentarios .-->
+
+<!--form_for esta obsoleto por ahora, junto con form_tag, reveer forma de formulario-->
+<%= form_for @comment = Comment.new do |f| %>
+    <%= render "devise/shared/error_messages", resource: @comment %>
+    <%= f.hidden_field :post_id, :value => object.id %>
+    <div class="form-group">
+      <%= f.text_area :content, class: "comment-box", placeholder: "Type your comment..." %>
+    </div>
+    <div>
+      <%= f.submit 'Comment', class:"btn bg-secondary m-0"%>
+    </div>
+<% end %>

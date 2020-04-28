@@ -1,8 +1,11 @@
 class CreateFriendships < ActiveRecord::Migration[6.0]
   def change
     create_table :friendships do |t|
-      t.references :sent_to, null: false, foreign_key: { to_table: :users } # reemplazo foreign_key: true
-      t.references :sent_by, null: false,  foreign_key: { to_table: :users } # reemplazo foreign_key: true
+      # {to_table: :users} la vincula a la tabla de usuarios.
+      # reemplazo foreign_key: true
+      t.references :sent_to, null: false, foreign_key: { to_table: :users }
+      # reemplazo foreign_key: true
+      t.references :sent_by, null: false,  foreign_key: { to_table: :users }
       t.boolean :status, default: false
 
       t.timestamps

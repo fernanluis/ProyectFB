@@ -9,8 +9,8 @@
 
     <!-- Para las vistas usaremos Bootstrap, GoogleFonts y FontAwesome.-->
 
-    <!--Here we will render our Flash notifications(render ‘layouts/flash’)
-    and our Navigation bar(render ‘layouts/header’) as well as add links to GoogleFonts and FontAwesome. -->
+    <!--Here we will render our Flash notifications(render ‘layouts/flash’) and our Navigation
+    bar(render ‘layouts/header’) as well as add links to GoogleFonts and FontAwesome. -->
 
    <link href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" rel="stylesheet">
    <link href="https://fonts.googleapis.com/css?family=Arima+Madurai:700|Courgette|Raleway:400,500&display=swap" rel="stylesheet">
@@ -24,9 +24,11 @@
   <body>
     <%= render 'layouts/header'%>
     <div class="container">
+      <br>
       <%= render 'layouts/flash'%>
       <!--yield is placeholder code where each of the other views will be displayed.-->
       <%= yield %>
+      <%= render 'layouts/footer' %>
     </div>
   </body>
 </html>

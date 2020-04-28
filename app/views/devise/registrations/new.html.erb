@@ -34,7 +34,8 @@
       <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
     </div>
 
-    <!--permite la carga de imágenes. -->
+    <!--Permite la carga de imágenes. Agregamos otro campo al formulario
+    de la página de registro que permite la carga de imágenes.-->
     <div class="picture form-group">
       <%= f.label :upload_your_profile_picture %><br />
       <%= f.file_field :image, class:"form-control", accept: 'image/jpeg,image/gif,image/png' %>
@@ -51,7 +52,8 @@
   <% end %>
 </div>
 
-<!--muestra un error de alerta cuando el archivo cargado tiene un tamaño superior a 1 MB.-->
+<!--Al usar la etiqueta de script, agregamos algo de JavaScript al final de la página
+que muestra un error de alerta cuando el archivo cargado tiene un tamaño superior a 1 MB.-->
 <script type="text/javascript">
 document.getElementById('user_image').addEventListener('change', function() {
   var size_in_megabytes = this.files[0].size/1024/1024;

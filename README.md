@@ -45,3 +45,10 @@ Vistas modales renderizadas compartidas
 Vistas usuarios index y show
 Función javascript para dar alerta cuando el archivo de imagen cargado sea mayor a 1Mb de tamaño.
 Notifications Modal
+
+vistas de comentarios esta pendiente de evaluación. Lo mismo con los posts.
+<!-- _comment.html.erb y _form.html.erb -->
+ver index user
+
+Users Views
+Find Friends — User Index View

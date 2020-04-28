@@ -1,0 +1,15 @@
+<!--La única diferencia con la vista de _like_comments.html.erb es la ruta utilizada. -->
+<span>
+<%= object.likes.count %>
+
+<!--El parámetro 'method: :post' en el método link_to . Esto es necesario para crear
+un nuevo objeto Me gusta. Generalmente link_to se usa para OBTENER información.-->
+<%= link_to post_likes_path(object), class: "text-light", method: :post do %>
+  <% if liked?(object, 'post') %>
+      <button class="btn btn-liked"><i class="fas fa-thumbs-up"></i></button>
+    <% else %>
+      <button class="btn btn-neutral"><i class="fas fa-thumbs-up"></i></button>
+  <% end %>
+<% end %>
+Likes
+</span>

@@ -1,8 +1,13 @@
 class ImageUploader < CarrierWave::Uploader::Base
+  # ESTO ES PARA AGREGAR UNA CARGA DE IMÁGENES.
+  # rails generate uploader Image
+
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
+  # agregando una carga de imágenes con generador de uploader image
   include CarrierWave::MiniMagick
-
+  # A continuación: cambia el tamaño de cualquier imagen cargada con ancho y alto mayor a 400..
+  process resize_to_limit: [400, 400]
   # Choose what kind of storage to use for this uploader:
   storage :file
   # storage :fog
@@ -35,6 +40,8 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
+  # Securing uploads (asegurando cargas): CarrierWave le permite especificar
+  # una lista blanca de extensiones permitidas o tipos de contenido.
   def extension_whitelist
     %w(jpg jpeg gif png)
   end

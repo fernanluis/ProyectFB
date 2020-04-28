@@ -4,45 +4,38 @@
     <nav class="navbar navbar-expand-sm">
       <div class ="navbar-header">
         <%= link_to posts_path, class:"text-light" do %>
-          <%=image_tag("", id:"logo", class:"navbar-branch")%>
-          <span class="text-white font-weight-bold font-courgette size-24">MYOBOOK</span>
+          <%=image_tag("", id:"logo", class:"text-light nav-link")%>
+          <span class="text-white">MYOBOOK</span>
         <% end %>
       </div>
 
-      <div class="container mx-auto">
         <div class="row mx-auto">
           <div class="col-auto">
-            <!-- The ‘link_to posts_path’ route simply links to the Posts index view -->
-            <%= link_to posts_path, class:"text-light nav-link font-raleway" do%>
-              <i class="fas fa-home"></i> Home
+            <!--La ruta ' link_to posts_path ' simplemente se vincula
+            a la vista de índice de publicaciones -->
+            <%= link_to posts_path, class:"text-light nav-link" do %>
+              <i class=""></i> HOME
             <%end%>
           </div>
 
           <div class="col-auto">
-            <!-- The ‘link_to users_path’ route simply links to the Users index view-->
-            <%= link_to users_path, class:"text-light nav-link font-raleway" do%>
-              <i class="fas fa-users"></i> Find Users
-            <%end%>
-          </div>
-
-          <div class="col-auto">
-            <!-- The ‘link_to posts_path’ route simply links to the Posts index view-->
-            <%= link_to posts_path, class:"text-light nav-link font-raleway" do%>
-              <i class="fas fa-users"></i> Posts
+  <!-- La ruta ' link_to users_path ' simplemente se vincula a la vista de índice de usuarios-->
+            <%= link_to users_path, class:"text-light nav-link" do%>
+              <i class=""></i> FIND FRIENDS
             <%end%>
           </div>
 
         </div>
-      </div>
 
       <ul class="navbar-nav ml-auto">
         <% if user_signed_in? %>
           <li class="nav-item">
-            <!-- The notification’s button will display an icon provided by FontAwesome
-            and the number of notifications the current user has. -->
-            <button class="text-white btn btn-secondary", data-toggle="modal" data-target="#noticeModal">
+            <!-- El botón de notificación mostrará un icono proporcionado por FontAwesome
+            y la cantidad de notificaciones que tiene el usuario actual. -->
+            <!--data-toggle abre una modal, con modal objetivo data-target -->
+            <button class="text-white btn btn-info", data-toggle="modal" data-target="#noticeModal">
               <i class="fas fa-bell"></i>
-                <%= current_user.notifications.count %>
+                <!--%= current_user.notifications.count %-->
             </button>
             <!-- slightly changed ..
             ..= button_to saw_notice_path, :class => "text-white btn notice-btn-#{notification_seen}",
@@ -60,15 +53,16 @@
             <!-- < end %>-->
           </li>
           <li class="nav-item dropdown">
-            <a id="navbarDropdown" class="nav-link dropdown-toggle font-raleway"
+            <a id="navbarDropdown" class="nav-link dropdown-toggle"
                 href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Account <b class="caret"></b>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <!--The ‘link_to user_path(current_user)’ route links to the Users show view
-              using the id of current user to display information relative to that user.-->
-              <%= link_to "My Profile", user_path(current_user), class:"dropdown-item font-raleway" %>
-              <!--The ‘link_to destroy_user_session_path’ route links to a devise sessions controller destroy method-->
+  <!--La ruta 'link_to user_path (current_user)' enlaza con la vista de visualización de usuarios
+  usando la identificación del usuario actual para mostrar información relativa a ese usuario.-->
+              <%= link_to "My Profile", user_path(current_user), class:"dropdown-item" %>
+<!--La ruta 'link_to destroy_user_session_path' se vincula a un método de destrucción del
+controlador de sesiones de idear-->
               <%= link_to "Log out", destroy_user_session_path, class:"dropdown-item font-raleway", method: :delete %>
             </div>
           </li>
@@ -78,14 +72,16 @@
   </div>
 </header>
 
-<!--This render at the bottom of the page is necessary for the notifications button to work.
-As it allows a pop up to appear once clicked which shows all notifications the user has. -->
+<!--Este render en la parte inferior de la página es necesario para que funcione el botón de
+notificaciones. Como permite que aparezca una ventana emergente una vez que se hace clic,
+que muestra todas las notificaciones que tiene el usuario.-->
 
-<!--This object variable passed is the associative has many link between the User model
-and the Notifications model. Since this is a has many link and it can return multiple records
-within the Notifications modal we run an each do loop to handle each notification separately.
-This allows us to categorize our notifications and the ability to show context correct text
-about each notification: app/views/shared/_notifications.html.erb-->
+<!--Esta variable de objeto aprobada es la asociativa que tiene muchos vínculos entre el modelo
+de Usuario y el modelo de Notificaciones. Dado que este es un enlace con muchos y puede devolver
+múltiples registros dentro del modo de Notificaciones, ejecutamos un bucle each do para manejar cada
+notificación por separado. Esto nos permite clasificar nuestras notificaciones y la capacidad
+de mostrar un texto de contexto correcto sobre cada notificación.
+app/views/shared/_notifications.html.erb-->
 <% if user_signed_in? %>
-  <%= render 'shared/notifications', object: current_user.notifications%>
-<%end%>
+  <%= render 'shared/notifications', object: current_user.notifications %>
+<% end %>

@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  # El orden en el que define sus rutas es crucial para el diseño
+  # y las rutas de los usuarios, ya que en algunos casos pueden terminar superpuestas.
+
   root 'users#index'
   devise_for :users
   resources :users, only: %i[index show] do
@@ -10,8 +13,9 @@ Rails.application.routes.draw do
     end
   end
 
-  # We used PUT because PUT and PATCH requests are used to update existing data.
-  put '/user/:id', to: 'user#update_img'
+  # También se agregó un enlace de ruta PUT al método update_img en el controlador de Usuarios.
+  # Utilizamos PUT porque las solicitudes PUT y PATCH se usan para actualizar los datos existentes.
+  put '/users/:id', to: 'users#update_img'
 
   resources :posts, only: %i[index new create show destroy] do
     resources :likes, only: %i[create]

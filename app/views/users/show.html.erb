@@ -9,7 +9,7 @@
     <div class="col-m6 mb-2"> <%= image_tag @user.image.url if @user.image? %> </div>
     <% if current_user.id == @user.id %>
       <div class="col-m6">
-        <button class= "btn btn-info text-white font-weight-bold" data-toggle="modal" data-target="#imageUploadModal">
+        <button class= "btn btn-primary text-white font-weight-bold" data-toggle="modal" data-target="#imageUploadModal">
           Upload Profile Picture
         </button>
         <%= render 'shared/imageUploadModal', object: @user%>
