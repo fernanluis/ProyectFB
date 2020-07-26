@@ -1,0 +1,24 @@
+<h1>This is just validation practice</h1>
+<h2>Just you have to complete the username field</h2>
+  <%=form_tag "/custom_sign_up", method: :post do %>
+    <ul>
+      <%= @user.errors.full_messages.each do |error| %>
+        <li><%= error %></li>
+      <%end%>
+    </ul>
+    <div>
+      <%= label_tag "user_username" %>
+      <%= text_field_tag "user[username]", @user.username %>
+    </div>
+    <div>
+      <%= label_tag "user_email" %>
+      <%= email_field_tag "user[email]", @user.email, require: true %>
+    </div>
+  <!--  <div>
+      <!%= label_tag "user_name" %>
+      <!%= text_field_tag "user[name]" %>
+    </div-->
+    <div>
+      <%= submit_tag ("Complete the register") %>
+    </div>
+  <%end%>

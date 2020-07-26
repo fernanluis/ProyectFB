@@ -3,7 +3,17 @@ Rails.application.routes.draw do
   # y las rutas de los usuarios, ya que en algunos casos pueden terminar superpuestas.
 
   root 'users#index'
-  devise_for :users
+  devise_for :users, controllers: {
+    omniauth_callbacks: "users/omniauth_callbacks"
+  }
+
+  # config/routes.rb
+  #devise_scope :user do
+  #  delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
+  #end
+
+  post "/custom_sign_up", to: "users/omniauth_callbacks#custom_sign_up"
+
   resources :users, only: %i[index show] do
     resources :friendships, only: %i[create] do
       collection do

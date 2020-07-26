@@ -5,7 +5,7 @@
       <div class ="navbar-header">
         <%= link_to posts_path, class:"text-light" do %>
           <%=image_tag("", id:"logo", class:"text-light nav-link")%>
-          <span class="text-white">MYOBOOK</span>
+          <span class="text-white">SOCIAL NETWORK</span>
         <% end %>
       </div>
 
@@ -82,6 +82,8 @@ múltiples registros dentro del modo de Notificaciones, ejecutamos un bucle each
 notificación por separado. Esto nos permite clasificar nuestras notificaciones y la capacidad
 de mostrar un texto de contexto correcto sobre cada notificación.
 app/views/shared/_notifications.html.erb-->
-<% if user_signed_in? %>
-  <%= render 'shared/notifications', object: current_user.notifications %>
-<% end %>
+<!--
+<-% if user_signed_in? %>
+  <-%= render 'shared/notifications', object: current_user.notifications %>
+<-% end %>
+-->

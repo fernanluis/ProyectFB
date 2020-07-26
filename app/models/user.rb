@@ -57,7 +57,36 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable,
+         #:omniauthable, :omniauth_providers => [:facebook]
+         :omniauthable, omniauth_providers: %i[facebook]
+
+  def self.from_omniauth(auth)
+    #where(provider: auth[:provider], uid: auth[:uid]).first_or_create do |user|
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      #if auth[:info]
+      #user.email = auth[:info][:email]
+      #user.fname = auth[:info][:fname]
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0, 20]
+      user.fname = auth.info.first_name   # assuming the user model has a name
+      user.lname = auth.info.last_name # assuming the user model has a last name
+      user.image = auth.info.image # assuming the user model has an image
+      # If you are using confirmable and the provider(s) you use validate emails,
+      # uncomment the line below to skip the confirmation emails.
+      # user.skip_confirmation!
+    end
+    #user.password = Devise.friendly_token[0, 20]
+
+  end
+
+  def self.new_with_session(params, session)
+    super.tap do |user|
+      if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
+        user.email = data["email"] if user.email.blank?
+      end
+    end
+  end
 
   validate :picture_size # requisitos de validación para el modelo de Usuario.
 
@@ -67,7 +96,7 @@ class User < ApplicationRecord
   end
 
   # El método friends_and_own_posts devuelve todas las publicaciones de todos
-  # los amigos del usuario junto con la publicación del usuario. 
+  # los amigos del usuario junto con la publicación del usuario.
   def friends_and_own_posts
     myfriends = friends # es una matriz que se completa utilizando la asociación 'has_many: friends'
                         # que devuelve todos los registros de los amigos del usuario.

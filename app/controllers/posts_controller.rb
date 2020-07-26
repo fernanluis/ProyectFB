@@ -35,7 +35,14 @@ class PostsController < ApplicationController
     end
   end
 
-  def destroy; end
+  def destroy
+    @post = Post.find(params[:id])
+    return unless current_user.id == @post.user_id
+
+    @post.destroy
+    flash[:success] = 'Post deleted'
+    redirect_back(fallback_location: root_path)
+  end
 
   # El método posts_params se declara como un método privado (solo se puede acceder al método
   # dentro del archivo actual) que permite los parámetros :content y :imageURL proporcionados
